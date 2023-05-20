@@ -1,0 +1,8 @@
+services:
+  entriesDB:
+    image: mongo:5.0.0
+    container_name: mongo_entries
+    ports:
+      - 27017:27018
+    volumes:
+      - ./mondo/data/db
