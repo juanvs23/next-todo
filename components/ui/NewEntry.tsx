@@ -49,8 +49,8 @@ const NewEntry = () => {
         title: titleRef,
         description: descriptionRef,
         status: 'pending',
-        createAt: '',
-        updateAt: '',
+        createdAt: '',
+        updatedAt: '',
       };
       const { data } = await createAxios.post('/entries/addentry', newEntry);
       console.log(data);

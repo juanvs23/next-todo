@@ -1,4 +1,4 @@
-import { Entry } from "./../models/context";
+import { Entry } from './../models/context';
 
 interface EntriesModel {
   entries: Entry[];
@@ -7,25 +7,25 @@ interface EntriesModel {
 export const seedData: EntriesModel = {
   entries: [
     {
-      title: "Este es mi nuevo titulo",
-      description: "Leer un libro",
-      status: "pending",
-      createAt: new Date(),
-      updateAt: new Date(),
+      title: 'Este es mi nuevo titulo',
+      description: 'Leer un libro',
+      status: 'pending',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-      title: "Leer nuevo titulo",
-      description: "Estudiar un libro",
-      status: "inProgress",
-      createAt: new Date(),
-      updateAt: new Date(),
+      title: 'Leer nuevo titulo',
+      description: 'Estudiar un libro',
+      status: 'inProgress',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
     {
-      title: "Pensar en el nuevo titulo",
-      description: "Programar algo",
-      status: "Completed",
-      createAt: new Date(),
-      updateAt: new Date(),
+      title: 'Pensar en el nuevo titulo',
+      description: 'Programar algo',
+      status: 'Completed',
+      createdAt: new Date(),
+      updatedAt: new Date(),
     },
   ],
 };

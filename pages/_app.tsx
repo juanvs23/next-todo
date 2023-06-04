@@ -1,14 +1,20 @@
-import type { AppProps } from "next/app";
-import "@/styles/globals.css";
-import { UIProvider } from "@/context/ui";
-import { EntriesProvider } from "../context/entries/";
+import { SessionProvider } from 'next-auth/react';
+import type { AppProps } from 'next/app';
+import '@/styles/globals.css';
+import { UIProvider } from '@/context/ui';
+import { EntriesProvider } from '../context/entries/';
+import { UserProvider } from '@/context/user';
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <EntriesProvider>
-      <UIProvider>
-        <Component {...pageProps} />
-      </UIProvider>
-    </EntriesProvider>
+    <SessionProvider session={session}>
+      <UserProvider>
+        <EntriesProvider>
+          <UIProvider>
+            <Component {...pageProps} />
+          </UIProvider>
+        </EntriesProvider>
+      </UserProvider>
+    </SessionProvider>
   );
 }

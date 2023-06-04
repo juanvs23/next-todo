@@ -49,15 +49,6 @@ export type ActionType = {
     | 'IS_DRAG_TRUE';
   payload?: boolean;
 };
-export interface UserData {
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  status: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 export interface EditInputProp {
   id: string | undefined;
   text: string;
