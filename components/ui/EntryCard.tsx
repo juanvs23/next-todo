@@ -8,10 +8,13 @@ import {
   Typography,
   Divider,
 } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import Link from 'next/link';
 import { Entry } from '@/models';
 import { UIContext } from '@/context/ui';
 import EditInput from './editInput';
 import DeleteComponent from './deleteComponent';
+import { dateFunctions } from '@/utils';
 
 interface EntryProp {
   entry: Entry;
@@ -20,23 +23,7 @@ const EntryCard: FC<EntryProp> = ({ entry }: EntryProp) => {
   const { _id, title, description, createdAt, status } = entry;
   const { setDraging, isDraggging } = useContext(UIContext);
   // let current = Math.floor(date);
-  let date: Date = new Date(createdAt);
-  let currentDate: Date = new Date();
-  let elapsedYear = currentDate.getFullYear() - date.getFullYear(),
-    elapsedMonth = currentDate.getMonth() + 1 - (date.getMonth() + 1),
-    elapsedDay = currentDate.getDate() - date.getDate(),
-    elapsedHour = currentDate.getHours() - date.getHours(),
-    elapsedMinutes = currentDate.getMinutes() - date.getMinutes();
-
-  const years = elapsedYear > 0 ? `${elapsedYear} años` : '';
-  const months = elapsedMonth > 0 ? `${elapsedMonth} meses` : '';
-  const days = elapsedDay > 0 ? `${elapsedDay} dias` : '';
-  const hours = elapsedHour > 0 ? `${elapsedHour} horas` : '';
-  const minutes = elapsedMinutes > 0 ? `${elapsedMinutes} minutos` : '';
-
-  const dateString = `${years !== '' ? years + ' ' : ''}${months != '' ? months + ' ' : ''}${
-    days != '' ? days + ' ' : ''
-  }${hours != '' ? hours + ' ' : ''}${minutes != '' ? minutes + ' ' : ''} `;
+  console.log(createdAt);
 
   // "IS_DRAG_FALSE"
   // "IS_DRAG_TRUE";
@@ -62,7 +49,7 @@ const EntryCard: FC<EntryProp> = ({ entry }: EntryProp) => {
       <CardActionArea>
         <CardContent>
           <Typography sx={{ whiteSpace: 'pre-line' }} variant="h5">
-            <EditInput entry={entry} id={_id} sourge="title" text={title} />
+            <EditInput entry={entry} id={_id} sourge="title" text={title || ''} />
           </Typography>
           <Typography sx={{ whiteSpace: 'pre-line' }}>
             <EditInput entry={entry} id={_id} sourge="description" text={description || ''} />
@@ -80,15 +67,14 @@ const EntryCard: FC<EntryProp> = ({ entry }: EntryProp) => {
           >
             <Box component="span" sx={{ fontWeight: 'bold', float: 'left' }}>
               {status === 'Completed' && <DeleteComponent id={_id || ''} />}
+              <Link href={`/entries/${_id}`}>
+                <VisibilityIcon color="primary" />
+              </Link>
             </Box>
             <Box
               component="span"
               sx={{ fontWeight: 'bold', float: 'right', paddingTop: '4px' }}
-            >{`Hace ${
-              minutes == '' && hours == '' && days == '' && years == ''
-                ? 'menos > 1 minuto'
-                : dateString
-            }`}</Box>
+            >{`Hace ${dateFunctions.showDate(entry.createdAt.toString())}`}</Box>
           </Typography>
         </CardActions>
       </CardActionArea>

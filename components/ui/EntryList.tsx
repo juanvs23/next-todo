@@ -19,7 +19,7 @@ const EntryList: FC<EntryProps> = ({ status }) => {
   const { isDraggging, setDraging } = useContext(UIContext);
   // console.log(entries);
   const entriesByStatus = useMemo(() => {
-    console.log(entries);
+    //  console.log(entries);
     return entries.filter(entry => entry.status === status);
   }, [entries]);
   const addButton = () => (status === 'pending' ? <ButtonEntry /> : <></>);

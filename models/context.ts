@@ -24,7 +24,7 @@ export interface EntriesState {
 }
 export interface Entry {
   _id?: string;
-  title: string;
+  title: string | null;
   description?: string;
   userID?: string;
   createdAt: Date | string;

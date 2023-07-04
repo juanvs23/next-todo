@@ -1,10 +1,12 @@
 import React from 'react';
-import { Container, Typography, Box, Card } from '@mui/material';
+import { Container, Typography, Box, Card, Paper } from '@mui/material';
+import { blue } from '@mui/material/colors';
 
 function FooterComponent() {
   return (
     <Box
       component="footer"
+      bgcolor="secondary"
       sx={{
         padding: '1rem',
         position: 'fixed',
@@ -13,10 +15,21 @@ function FooterComponent() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'paper.secondary',
+        background: `${blue[700]}`,
       }}
     >
-      FooterComponent
+      <Typography color={'white'} variant="body2">
+        Desarrollado por{' '}
+        <a
+          href="mailto:juanvs23@gmail.com"
+          style={{ color: 'white', textDecoration: 'none' }}
+          target="_blank"
+          className=""
+        >
+          Juan Carlos Avila Pérez
+        </a>{' '}
+        - 2023
+      </Typography>
     </Box>
   );
 }
