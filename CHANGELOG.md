@@ -7,11 +7,16 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.0.0] - 2022-06-30
+## [1.0.0] - 2023-06-30
 
 ### Added
 
+iNITIAL VERION
+
 ### Changed
+
+Se creo el sistema de grid basado en drag & Drop y se crearon los endpoint basicos
+se añadio la pagina para el detallado
 
 ### Fixed
 
